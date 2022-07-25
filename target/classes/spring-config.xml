@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- *************************getter setter method ko lagi ********************************************************************* -->
+	<!-- <bean id="u" class="com.techbook.basic.User" > 
+	    <property name="firstName" value="khagendra"></property> 
+		<property name="address" ref="addr"> </property> 
+		
+		</bean> <bean id="addr" class="com.techbook.basic.Address" > <property name="cityName" 
+		value="Iowa"></property> <property name="countryName" value="Usa"></property> 
+		</bean> -->
+
+	<!--+############################################ ref nadie pani garna sakinxa inner bean banayera###################### ######-->
+	<!--  <bean id="u" class="com.techbook.basic.User">
+		<property name="firstName" value="khagendra"></property>
+		<property name="address">
+			<bean id="addr" class="com.techbook.basic.Address">
+				<property name="cityName" value="Iowa"></property>
+				<property name="countryName" value="Usa"></property>
+			</bean>
+		</property>
+	</bean>-->
+
+	<!-- #######################inner nabanai pani garna sakinxa ################################################################ -->
+
+	<!--  <bean id="u" class="com.techbook.basic.User" autowire="byName">
+		<property name="firstName" value="khagendra"></property>
+		
+	</bean>
+	<bean id="address" class="com.techbook.basic.Address">   ++yaha id address hunu parxa coz user ma Address ko name address xa ++
+		<property name="cityName" value="Iowa"></property>
+		<property name="countryName" value="Usa"></property>
+	</bean>-->
+    <!--#####################################autai manxae ko adress dherai huna sakxa so #####################################33-->
+  <!--    <bean id="u" class="com.techbook.basic.User" autowire="byName">
+		<property name="firstName" value="khagendra"></property>
+		<property name="addresses">
+		<list>    +++ yaha yo addresses property vitra ko auta list ho ani list vitra ko auta bean ho +++
+		<ref bean="address1"/>
+		<ref bean="address2"/>
+		</list>
+	   </property>
+	   </bean>
+	<bean id="address1" class="com.techbook.basic.Address">  +++ yaha id addresses hunu parxa coz user ma Address ko name addresses xa 
+		<property name="cityName" value="Iowa"></property>
+		<property name="countryName" value="Usa"></property>
+	</bean>
+    
+    <bean id="address2" class="com.techbook.basic.Address">  +++yaha id addresses hunu parxa coz user ma Address ko name addresses xa 
+		<property name="cityName" value="Illam"></property>
+		<property name="countryName" value="Nepal"></property>
+	</bean>-->
+    <!-- ######################################################################################################################### -->
+    
+    
+    <!--================================= address.property ma vakoo value tannako lagi========================= -->
+   <!--  <bean id="u" class="com.techbook.basic.User">
+		<property name="firstName" value="khagendra"></property>
+		<property name="addresses">
+		<list>       yaha yo addresses property vitra ko auta list ho ani list vitra ko auta bean ho 
+		<ref bean="address1"/>
+		<ref bean="address2"/>
+		</list>
+	   </property>
+	   </bean>
+	<bean id="address1" class="com.techbook.basic.Address">   yaha id addresses hunu parxa coz user ma Address ko name addresses xa 
+		<property name="cityName" value="${address.cityName}"></property>
+		<property name="countryName" value="${address.countryName}"></property>
+	</bean>
+    
+    <bean id="address2" class="com.techbook.basic.Address">   yaha id addresses hunu parxa coz user ma Address ko name addresses xa 
+		<property name="cityName" value="Illam"></property>
+		<property name="countryName" value="Nepal"></property>
+	</bean>  --> 
+	
+	<!-- ######################First name ko bean nalida asari garna sakinxa ########################## -->
+     <bean id="u" class="com.techbook.basic.User">
+		<property name="firstName" value="khagendra"></property>
+		
+	   </bean>
+	<bean id="address1" class="com.techbook.basic.Address">  <!-- yaha id addresses hunu parxa coz user ma Address ko name addresses xa -->
+		<property name="cityName" value="${address.cityName}"></property>
+		<property name="countryName" value="${address.countryName}"></property>
+	</bean>
+    
+    <bean id="address2" class="com.techbook.basic.Address">  <!-- yaha id addresses hunu parxa coz user ma Address ko name addresses xa -->
+		<property name="cityName" value="Illam"></property>
+		<property name="countryName" value="Nepal"></property>
+	</bean> 
+    
+	<!-- ********************** constructor method ko lagi ************************************************************************ -->
+	<!-- <bean id="u" class="com.techbook.basic.User"> <constructor-arg value="17" 
+		type="int"></constructor-arg> <constructor-arg value="Nepal" type="String" 
+		name="address"></constructor-arg> <constructor-arg value="Durga" type="String" 
+		name ="firstName"></constructor-arg></bean> -->
+		
+		
+	<!-- @@@@@@@@@@@@@@@@@property.address ko lagi bean@@@@@@@@@@@@@@@@@@@@ -->
+		<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="address.properties"></property>
+		</bean>
+		
+		<!-- @@@@@@@@@@@@@@@@@@first name ko bean nalida yaha bean banaune@@@@@@@@@@@@@@  -->
+		
+		<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean>
+		
+		
+	</beans>
